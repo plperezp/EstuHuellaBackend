@@ -9,13 +9,13 @@ const habitoSchema = new mongoose.Schema(
     
     vehiculo: {
       type: String, 
-      required: [true, "Transporte is required"],
+      //required: [true, "Vehiculo is required"],
       enum:["coche", "autobús", "tren", "metro", "bicicleta", "caminar"]
     },
     
     tiempo: {
       type:Number,
-      required: [true, "Distancia is required"],
+      //required: [true, "tiempo is required"],
       min:1,
       max: 450
     },
@@ -34,12 +34,12 @@ const habitoSchema = new mongoose.Schema(
 
     esRenovable: {
       type: Boolean,
-      default: false
+      
     
     },
     recicla:{
       type:Boolean,
-      default: false
+      
   },
 },
     alimentacion:{
@@ -47,14 +47,11 @@ const habitoSchema = new mongoose.Schema(
       type:String,
       enum:["pollo", "cerdo", "ternera", "vegetales"]
     },
-    cantidadCarne:{
+    cantidad:{
       type:Number,
       min:0
     },
-    cantidadVegetales:{
-      type:Number,
-      min:0
-    },
+   
     esDeProximidad:{
       type:Boolean,
     }

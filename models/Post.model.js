@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose");
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
-const postSchema = new Schema(
+const postSchema = new mongoose.Schema(
 {
   user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
 
@@ -26,6 +26,6 @@ const postSchema = new Schema(
 
 
 
-const Post = model("Post", userSchema);
+const Post = model("Post", postSchema);
 
 module.exports = Post ;

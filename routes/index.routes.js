@@ -11,4 +11,7 @@ router.use("/auth", authRouter)
 const habitoRouter = require ("./habito.routes")
 router.use("/huella",habitoRouter)
 
+const postRouter = require("./post.routes")
+router.use("/foro", postRouter)
+
 module.exports = router;
