@@ -1,30 +1,34 @@
 const { Schema, model } = require("mongoose");
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
-const habitosSchema = new Schema(
+const habitoSchema = new mongoose.Schema(
   {
-
-    transportes: {
-      type: [String], 
+    transporte:{
+    
+    vehiculo: {
+      type: String, 
       required: [true, "Transporte is required"],
       enum:["coche", "autobús", "tren", "metro", "bicicleta", "caminar"]
     },
-
-    distancia: {
+    
+    tiempo: {
       type:Number,
       required: [true, "Distancia is required"],
       min:1,
       max: 450
     },
     motor: {
-      type: [String],
+      type: String,
       enum:["gasolina","diesel","electrico","hibrido"]
     },
+  },
+
+    otros:{
     consumoEnergetico: {
-      type: [String],
-      required: [true, 'Consumo is required.'],
+      type: String,
+      //required: [true, 'Consumo is required.'],
       enum:["electricidad","gas natural","butano"]
     },
 
@@ -33,24 +37,30 @@ const habitosSchema = new Schema(
       default: false
     
     },
-
-    alimentacion:{
-      type:[String],
-      enum:["pollo", "cerdo", "ternera", "vegetales"]
-    },
-    cantidaCarne:{
-      type:Number,
-      min:0
-    },
-    cantidaVegetales:{
-      type:Number,
-      min:0
-    },
     recicla:{
       type:Boolean,
       default: false
+  },
+},
+    alimentacion:{
+    alimento:{
+      type:String,
+      enum:["pollo", "cerdo", "ternera", "vegetales"]
     },
-    userId: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
+    cantidadCarne:{
+      type:Number,
+      min:0
+    },
+    cantidadVegetales:{
+      type:Number,
+      min:0
+    },
+    esDeProximidad:{
+      type:Boolean,
+    }
+  },
+  
+    user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
@@ -60,6 +70,6 @@ const habitosSchema = new Schema(
   }
 );
 
-const Habitos = model("Habitos", userSchema);
+const Habito = model("Habito", habitoSchema);
 
-module.exports = Habitos ;
+module.exports = Habito ;

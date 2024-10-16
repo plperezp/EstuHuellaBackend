@@ -5,18 +5,13 @@ const Schema = mongoose.Schema;
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const commentSchema = new Schema(
 {
-  userId: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
-  postId: {type: mongoose.Schema.Types.ObjectId, ref: "Post"},
+  user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
+  post: {type: mongoose.Schema.Types.ObjectId, ref: "Post"},
  
-  textArea:{
+  text:{
     type: String,
     required: [true, "TextArea is required"]
   },
-
-  CheckUser: {
-    type:Boolean,
-    default:false
-  }
   
 }
 

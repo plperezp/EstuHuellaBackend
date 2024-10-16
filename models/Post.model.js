@@ -5,14 +5,14 @@ const Schema = mongoose.Schema;
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const postSchema = new Schema(
 {
-  userId: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
+  user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
 
   title:{
     type: String,
     required: [true, "Title is required"],
   },
 
-  textArea:{
+  text:{
     type: String,
     required: [true, "TextArea is required"]
   },
