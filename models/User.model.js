@@ -34,7 +34,8 @@ const userSchema = new mongoose.Schema(
     },
     mediHuella:{
       type: Number,
-      min: 0
+      min: 0,
+      default: 0
     },
     img:{
       type:String
