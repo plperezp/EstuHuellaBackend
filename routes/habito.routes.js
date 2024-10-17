@@ -34,7 +34,7 @@ console.log(vehiculo, tiempo, motor)
 
 router.post("/otros", async (req, res ,next)=>{
   const {otros}=req.body
-  const {consumoEnergetico, esRenovable}= otros
+  const {consumoEnergetico, esRenovable, recicla}= otros
   if(!consumoEnergetico){
     res.status(400).json({message:"elige una energia"})
   }

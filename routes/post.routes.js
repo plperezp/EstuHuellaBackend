@@ -43,8 +43,15 @@ router.put("/:id", async (req, res, next)=>{
 
 router.delete("/:id", async (req, res, next)=>{
   try {
-    const response = await Post.findByIdAndDelete(req.params.id)
-    res.status(200).json({message: "Post eliminado"})
+   const response =  await Post.findByIdAndDelete(req.params.id)
+   if (response) {
+    res.json({mesage:"Element Deleted"})
+    console.log("Se elimino")
+  } else {
+    res.json("Element not found")
+    console.log("No lo encontro")
+  }
+  
   } catch (error) {
     next(error)
   }
