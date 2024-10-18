@@ -1,21 +1,22 @@
 const router = require("express").Router()
+const verifyToken = require("../middlewares/auth.middlewares")
 const User = require("../models/User.model")
 
-router.get("/:id", async (req, res, next)=>{
+router.get("/:id",verifyToken, async (req, res, next)=>{
 
   try {
-    const response = await User.findById(req.params.id)
+    const response = await User.findById(req.payload._id)
     res.status(200).json(response)
   } catch (error) {
     next(error)
   }  
 })
 
-router.patch("/:id", async (req, res, next) =>{
+router.patch("/:id",verifyToken, async (req, res, next) =>{
 
   const { mediHuella } = req.body
   try {
-    const response = await User.findByIdAndUpdate(req.params.id,{
+    const response = await User.findByIdAndUpdate(req.payload._id,{
       mediHuella
     },{new:true})
 
@@ -27,12 +28,29 @@ router.patch("/:id", async (req, res, next) =>{
   
 
 })
+router.patch("/:id",verifyToken, async (req, res, next) =>{
 
-router.patch("/huella/:id", async (req, res, next)=>{
+  const { img } = req.body
+  try {
+    const response = await User.findByIdAndUpdate(req.payload._id,{
+      img
+    },{new:true})
+
+    res.status(200).json(response)
+
+  } catch (error) {
+    next(error)
+  }
+  
+
+})
+
+
+router.patch("/huella/:id",verifyToken, async (req, res, next)=>{
   const {huella} = req.body
 
   try {
-    const response = await User.findByIdAndUpdate(req.params.id,{$push:{huella:huella}}, {new:true})
+    const response = await User.findByIdAndUpdate(req.payload._id,{$push:{huella:huella}}, {new:true})
     res.status(200).json(response)
   } catch (error) {
     next(error)
