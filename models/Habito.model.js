@@ -22,7 +22,7 @@ const habitoSchema = new mongoose.Schema(
         enum: ["gasolina", "diesel", "electrico", "hibrido"],
       },
     },
-
+    
     otros: {
       consumoEnergetico: {
         type: String,
