@@ -1,9 +1,8 @@
-const jwt = require ("jsonwebtoken")
+const jwt = require('jsonwebtoken')
 
-function verifyToken(req, res, next){
-
+function verifyToken(req, res, next) {
   try {
-    const tokenArr = req.headers.authorization.split(" ")
+    const tokenArr = req.headers.authorization.split(' ')
     const token = tokenArr[1]
 
     const payload = jwt.verify(token, process.env.TOKEN_SECRET)
@@ -11,10 +10,8 @@ function verifyToken(req, res, next){
 
     next()
   } catch (error) {
-    res.status(401).json({message: "Token no valido o no existe"})
+    res.status(401).json({ message: 'Token no valido o no existe' })
   }
-
-  next()
 }
 
 module.exports = verifyToken
