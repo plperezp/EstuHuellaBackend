@@ -86,22 +86,9 @@ router.post("/alimentacion", verifyToken, async (req, res, next) => {
   }
 });
 
-/*router.get("/:id", async(req, res, next) =>{
-  console.log(req)
+router.get("/user", verifyToken, async (req, res, next) => {
   try {
-    
-    const response = await Habito.findById(req.params.id).populate("user")
-    res.status(200).json(response)
-  } catch (error) {
-    next (error)
-    console.log(error)
-  }
-
-})*/
-
-router.get("/user/:userId", verifyToken, async (req, res, next) => {
-  try {
-    const habits = await Habito.find({ user: req.payload._id });
+    const habits = await Habito.find({user:req.payload._id} )
     if (!habits) {
       return res
         .status(404)

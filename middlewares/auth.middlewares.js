@@ -14,7 +14,7 @@ function verifyToken(req, res, next){
     res.status(401).json({message: "Token no valido o no existe"})
   }
 
-  next()
+ 
 }
 
 module.exports = verifyToken
