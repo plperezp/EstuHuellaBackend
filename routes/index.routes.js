@@ -7,8 +7,8 @@ router.get('/', (req, res, next) => {
 const authRouter = require('./auth.routes')
 router.use('/auth', authRouter)
 
-const authRouter = require('./authGoogle.routes')
-router.use('/auth/google', authRouter)
+const authGoogleRouter = require('./authGoogle.routes')
+router.use('/auth/google', authGoogleRouter)
 
 const habitoRouter = require('./habito.routes')
 router.use('/huella', habitoRouter)
