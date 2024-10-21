@@ -3,9 +3,12 @@ const User = require('../models/User.model')
 const passport = require('passport')
 const router = express.Router()
 const mongoose = require('mongoose')
+const { verify } = require('jsonwebtoken')
+const verifyToken = require('../middlewares/auth.middlewares')
 
 router.get(
   '/',
+
   passport.authenticate('google', { scope: ['profile', 'email'] })
 )
 
