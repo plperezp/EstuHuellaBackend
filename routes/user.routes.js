@@ -1,6 +1,9 @@
 const router = require('express').Router()
 const verifyToken = require('../middlewares/auth.middlewares')
 const User = require('../models/User.model')
+const calculahuella = require('../utils/Calculahuella')
+
+const { huellaDiaria } = calculahuella
 
 router.get('/', verifyToken, async (req, res, next) => {
   try {
@@ -17,7 +20,6 @@ router.patch('/', verifyToken, async (req, res, next) => {
     const response = await User.findByIdAndUpdate(
       req.payload._id,
       {
-        mediHuella,
         img,
       },
       { new: true }
@@ -30,12 +32,10 @@ router.patch('/', verifyToken, async (req, res, next) => {
 })
 
 router.patch('/huella', verifyToken, async (req, res, next) => {
-  const { huella } = req.body
-
   try {
     const response = await User.findByIdAndUpdate(
       req.payload._id,
-      { $push: { huella: { $each: [huella], $position: 0 } } },
+      { $push: { huella: { $each: [huellaDiaria], $position: 0 } } },
       { new: true }
     )
     res.status(200).json(response)
