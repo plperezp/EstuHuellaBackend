@@ -26,15 +26,14 @@ router.get(
 
         const newUser = new User({
           googleId: req.user.id,
-          email,
-          name,
-          password,
-          huella,
-          mediHuella,
-          img,
-          username,
+          email: req.user.profile.email,
+          name: req.user.profile.name,
+          password: '',
+          huella: '',
+          img: '',
+          username: '',
         })
-        await newUser.create()
+        await newUser.save()
         req.login(newUser, (err) => {
           if (err) return next(err)
           res.redirect('/')
