@@ -9,6 +9,8 @@ passport.use(
       callbackURL: '/auth/google/callback',
     },
     function (accessToken, refreshToken, profile, done) {
+      req.session.accessToken = accessToken
+      req.session.refreshToken = refreshToken
       done(null, profile)
     }
   )
