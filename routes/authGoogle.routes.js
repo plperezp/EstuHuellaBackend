@@ -1,4 +1,4 @@
-/*const express = require('express')
+const express = require('express')
 const User = require('../models/User.model')
 const passport = require('passport')
 const router = express.Router()
@@ -46,4 +46,4 @@ router.get(
     } catch (error) {}
   }
 )
-module.exports = router*/
+module.exports = router
