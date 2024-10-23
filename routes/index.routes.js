@@ -19,4 +19,7 @@ router.use('/foro', postRouter)
 const userRouter = require('./user.routes')
 router.use('/user', userRouter)
 
+const publicUserRouter = require('./publicUser.routes')
+router.use('/public', publicUserRouter)
+
 module.exports = router
