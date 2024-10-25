@@ -1,5 +1,5 @@
-const { Schema, model } = require("mongoose");
-const mongoose = require("mongoose");
+const { Schema, model } = require('mongoose')
+const mongoose = require('mongoose')
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const habitoSchema = new mongoose.Schema(
@@ -8,7 +8,15 @@ const habitoSchema = new mongoose.Schema(
       vehiculo: {
         type: String,
         //required: [true, "Vehiculo is required"],
-        enum: ["coche", "autobús", "tren", "metro", "bicicleta", "caminar"],
+        enum: [
+          'coche',
+          'autobús',
+          'tren',
+          'metro',
+          'bicicleta',
+          'caminar',
+          'avion',
+        ],
       },
 
       tiempo: {
@@ -19,15 +27,15 @@ const habitoSchema = new mongoose.Schema(
       },
       motor: {
         type: String,
-        enum: ["gasolina", "diesel", "electrico", "hibrido"],
+        enum: ['gasolina', 'diesel', 'electrico', 'hibrido'],
       },
     },
-    
+
     otros: {
       consumoEnergetico: {
         type: String,
         //required: [true, 'Consumo is required.'],
-        enum: ["electricidad", "gas natural", "butano"],
+        enum: ['electricidad', 'gas natural', 'butano', 'pescado'],
       },
 
       esRenovable: {
@@ -40,7 +48,7 @@ const habitoSchema = new mongoose.Schema(
     alimentacion: {
       alimento: {
         type: String,
-        enum: ["pollo", "cerdo", "ternera", "vegetales"],
+        enum: ['pollo', 'cerdo', 'ternera', 'vegetales'],
       },
       cantidad: {
         type: Number,
@@ -52,14 +60,14 @@ const habitoSchema = new mongoose.Schema(
       },
     },
 
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
-);
+)
 
-const Habito = model("Habito", habitoSchema);
+const Habito = model('Habito', habitoSchema)
 
-module.exports = Habito;
+module.exports = Habito
